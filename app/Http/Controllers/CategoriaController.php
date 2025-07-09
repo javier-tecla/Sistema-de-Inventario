@@ -12,9 +12,9 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $categorias = Categoria::all();
+        return view('admin.categorias.index', compact('categorias'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
