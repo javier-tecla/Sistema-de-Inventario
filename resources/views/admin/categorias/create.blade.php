@@ -25,7 +25,8 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body" style="display: block;">
-                    <form action="">
+                    <form action="{{ url('/admin/categorias/create') }}" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -37,11 +38,14 @@
                                         <input type="text" class="form-control" id="nombre" name="nombre"
                                         placeholder="Ingrese el nombre de la categoría" required>
                                     </div>
+                                    @error('nombre')
+                                        <small style="color: red">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="nombre">Descripción de la categoría</label>
+                                    <label for="nombre">Descripción de la categoría (opcional)</label>
                                     <textarea class="form-control" id="descripcion" name="descripcion"
                                         placeholder="Ingrese una breve descripción de la categoría"></textarea>
                                 </div>
@@ -69,5 +73,5 @@
     @stop
 
     @section('js')
-
+   
     @stop
