@@ -14,3 +14,4 @@ Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->na
 
 //rutas para categorias
 Route::get('/admin/categorias', [App\Http\Controllers\CategoriaController::class, 'index'])->name('categorias.index')->middleware('auth');
+Route::get('/admin/categorias/create', [App\Http\Controllers\CategoriaController::class, 'create'])->name('categorias.create')->middleware('auth');
