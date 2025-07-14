@@ -46,9 +46,11 @@ class CategoriaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Categoria $categoria)
+    public function show($id)
     {
-        //
+        $categoria = Categoria::findOrFail($id);
+        // return response()->json($categoria);
+        return view('admin.categorias.show', compact('categoria'));
     }
 
     /**
