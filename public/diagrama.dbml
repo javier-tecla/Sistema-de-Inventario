@@ -1,3 +1,11 @@
+Table Sucursales {
+    id int [pk, increment]
+    nombre varchar(100) [not null]
+    direccion varchar(255)
+    telefono varchar(15)
+    activa boolean [default: true]
+}
+
 Table Categorias {
     Id int [pk, increment]
     nombre varchar(100) [not null]

@@ -310,6 +310,12 @@ return [
         ['header' => 'Menú'
         ],
         [
+            'text' => 'Sucursales',
+            'url' => 'admin/sucursales',
+            'icon' => 'fas fa-fw fa-building',
+            'classes' => 'bg-blue text-white',
+        ],
+        [
             'text' => 'Categorías',
             'url' => 'admin/categorias',
             'icon' => 'fas fa-fw fa-list',
