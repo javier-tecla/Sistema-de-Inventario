@@ -43,7 +43,8 @@
                                     <td style="text-align: center">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <a href="{{ url('/admin/categoria/'.$categoria->id) }}" class="btn btn-info"><i class="fas fa-eye"></i> Ver</a>
-                                            <button type="button" class="btn btn-primary">Middle</button>
+                                            <a href="{{ url('/admin/categoria/'.$categoria->id.'/edit') }}" class="btn btn-success"><i class="fas fa-pencil-alt"></i> Editar</a>
+                                            
                                             <button type="button" class="btn btn-primary">Right</button>
                                         </div>
                                     </td>
