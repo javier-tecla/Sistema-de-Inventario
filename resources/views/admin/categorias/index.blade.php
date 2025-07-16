@@ -37,15 +37,42 @@
                         <tbody>
                             @foreach ($categorias as $categoria)
                                 <tr>
-                                    <td>{{ $categoria->id }}</td>
+                                    <td style="text-align: center">{{ $loop->iteration }}</td>
                                     <td>{{ $categoria->nombre }}</td>
                                     <td>{{ $categoria->descripcion }}</td>
                                     <td style="text-align: center">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ url('/admin/categoria/'.$categoria->id) }}" class="btn btn-info"><i class="fas fa-eye"></i> Ver</a>
-                                            <a href="{{ url('/admin/categoria/'.$categoria->id.'/edit') }}" class="btn btn-success"><i class="fas fa-pencil-alt"></i> Editar</a>
-                                            
-                                            <button type="button" class="btn btn-primary">Right</button>
+                                            <a href="{{ url('/admin/categoria/' . $categoria->id) }}"
+                                                class="btn btn-info"><i class="fas fa-eye"></i> Ver</a>
+                                            <a href="{{ url('/admin/categoria/' . $categoria->id . '/edit') }}"
+                                                class="btn btn-success"><i class="fas fa-pencil-alt"></i> Editar</a>
+                                            <form action="{{ url('/admin/categoria/' . $categoria->id) }}" id="miformulario{{ $categoria->id }}" method="POST"
+                                                class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"
+                                                    onclick="preguntar{{ $categoria->id }}(event)">
+                                                    <i class="fas fa-trash-alt"></i> Eliminar</button>
+                                            </form>
+                                            <script>
+                                                function preguntar{{ $categoria->id }}(event) {
+                                                        event.preventDefault();
+                                                        Swal.fire({
+                                                            title: "¿Desea eliminar este registro?",
+                                                            text: "",
+                                                            icon: "question",
+                                                            showCancelButton: true,
+                                                            confirmButtonColor: "#3085d6",
+                                                            cancelButtonColor: "#d33",
+                                                            confirmButtonText: "Si, eliminar!",
+                                                            denyButtonText: "No, cancelar"
+                                                        }).then((result) => {
+                                                            if (result.isConfirmed) {
+                                                                document.getElementById('miformulario{{ $categoria->id }}').submit();
+                                                            }
+                                                        });
+                                                    }
+                                            </script>
                                         </div>
                                     </td>
                                 </tr>
