@@ -52,11 +52,11 @@
                                     </td>
                                     <td style="text-align: center">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ url('/admin/sucursal/' . $sucursal->id) }}"
+                                            <a href="{{ url('/admin/sucursales/' . $sucursal->id) }}"
                                                 class="btn btn-info"><i class="fas fa-eye"></i> Ver</a>
-                                            <a href="{{ url('/admin/sucursal/' . $sucursal->id . '/edit') }}"
+                                            <a href="{{ url('/admin/sucursales/' . $sucursal->id . '/edit') }}"
                                                 class="btn btn-success"><i class="fas fa-pencil-alt"></i> Editar</a>
-                                            <form action="{{ url('/admin/sucursal/' . $sucursal->id) }}" id="miformulario{{ $sucursal->id }}" method="POST"
+                                            <form action="{{ url('/admin/sucursales/' . $sucursal->id) }}" id="miformulario{{ $sucursal->id }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')

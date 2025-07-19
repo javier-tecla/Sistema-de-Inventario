@@ -25,7 +25,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body" style="display: block;">
-                    <form action="{{ url('/admin/categoria/'.$categoria->id) }}" method="POST">
+                    <form action="{{ url('/admin/categorias/'.$categoria->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="row">

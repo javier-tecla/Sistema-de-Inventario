@@ -42,11 +42,11 @@
                                     <td>{{ $categoria->descripcion }}</td>
                                     <td style="text-align: center">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ url('/admin/categoria/' . $categoria->id) }}"
+                                            <a href="{{ url('/admin/categorias/' . $categoria->id) }}"
                                                 class="btn btn-info"><i class="fas fa-eye"></i> Ver</a>
-                                            <a href="{{ url('/admin/categoria/' . $categoria->id . '/edit') }}"
+                                            <a href="{{ url('/admin/categorias/' . $categoria->id . '/edit') }}"
                                                 class="btn btn-success"><i class="fas fa-pencil-alt"></i> Editar</a>
-                                            <form action="{{ url('/admin/categoria/' . $categoria->id) }}" id="miformulario{{ $categoria->id }}" method="POST"
+                                            <form action="{{ url('/admin/categorias/' . $categoria->id) }}" id="miformulario{{ $categoria->id }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')

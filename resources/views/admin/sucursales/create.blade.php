@@ -98,7 +98,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group d-flex justify-content-between">
-                                    <a href="{{ url('/admin/categorias') }}" class="btn btn-secondary">Cancelar</a>
+                                    <a href="{{ url('/admin/sucursales') }}" class="btn btn-secondary">Cancelar</a>
                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>
                             </div>
