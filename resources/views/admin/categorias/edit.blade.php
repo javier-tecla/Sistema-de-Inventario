@@ -16,7 +16,7 @@
         <div class="col-md-4">
             <div class="card card-success">
                 <div class="card-header">
-                    <h3 class="card-title"><b>Registrar nueva categoría</b></h3>
+                    <h3 class="card-title"><b>Editar categoría</b></h3>
 
                     <div class="card-tools">
 

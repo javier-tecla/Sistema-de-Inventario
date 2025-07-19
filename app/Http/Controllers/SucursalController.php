@@ -22,7 +22,7 @@ class SucursalController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.sucursales.create');
     }
 
     /**
@@ -30,38 +30,83 @@ class SucursalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return response()->json(request()->all());
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'direccion' => 'required',
+            'telefono' => 'required',
+            'activa' => 'required|boolean',
+
+        ]);
+
+        $sucursal = new Sucursal();
+        $sucursal->nombre = $request->nombre;
+        $sucursal->direccion = $request->direccion;
+        $sucursal->telefono = $request->telefono;
+        $sucursal->activa = $request->activa;
+        $sucursal->save();
+
+        return redirect()->route('sucursales.index')
+        ->with('mensaje', 'Sucursal creada exitosamente')
+        ->with('icono', 'success');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Sucursal $sucursal)
+    public function show($id)
     {
-        //
+        $sucursal = Sucursal::findOrFail($id);
+        return view('admin.sucursales.show', compact('sucursal'));
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sucursal $sucursal)
+    public function edit($id)
     {
-        //
+        $sucursal = Sucursal::findOrFail($id);
+    //    return response()->json($categoria);
+        return view('admin.sucursales.edit', compact('sucursal'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Sucursal $sucursal)
+    public function update(Request $request, $id)
     {
-        //
+        // return response()->json(request()->all());
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'direccion' => 'required',
+            'telefono' => 'required',
+            'activa' => 'required|boolean',
+
+        ]);
+
+        $sucursal = Sucursal::findOrFail($id);
+        $sucursal->nombre = $request->nombre;
+        $sucursal->direccion = $request->direccion;
+        $sucursal->telefono = $request->telefono;
+        $sucursal->activa = $request->activa;
+        $sucursal->save();
+
+        return redirect()->route('sucursales.index')
+        ->with('mensaje', 'Sucursal actualizada exitosamente')
+        ->with('icono', 'success');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sucursal $sucursal)
+    public function destroy($id)
     {
-        //
+        $sucursal =Sucursal::findOrFail($id);
+        $sucursal->delete();
+
+        return redirect()->route('sucursales.index')
+        ->with('mensaje', 'Sucursal eliminada exitosamente')
+        ->with('icono', 'success');
     }
 }

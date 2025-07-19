@@ -29,7 +29,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="nombre">Nombre de la categoría <sup class="text-danger">*</sup></label>
+                                    <label for="nombre">Nombre de la categoría </label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-tags"></i></span>

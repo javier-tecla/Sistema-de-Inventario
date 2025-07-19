@@ -35,7 +35,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-tags"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" id="nombre" name="nombre"
+                                        <input type="text" value="{{ old('nombre') }}" class="form-control" id="nombre" name="nombre"
                                         placeholder="Ingrese el nombre de la categoría" required>
                                     </div>
                                     @error('nombre')
@@ -45,9 +45,9 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="nombre">Descripción de la categoría (opcional)</label>
+                                    <label for="descripcion">Descripción de la categoría (opcional)</label>
                                     <textarea class="form-control" id="descripcion" name="descripcion"
-                                        placeholder="Ingrese una breve descripción de la categoría"></textarea>
+                                        placeholder="Ingrese una breve descripción de la categoría">{{ old('descripcion') }}</textarea>
                                 </div>
                             </div>
                         </div>
