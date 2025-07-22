@@ -321,6 +321,12 @@ return [
             'icon' => 'fas fa-fw fa-list',
             'classes' => 'bg-blue text-white',
         ],
+        [
+            'text' => 'Productos',
+            'url' => 'admin/productos',
+            'icon' => 'fas fa-fw fa-box',
+            'classes' => 'bg-blue text-white',
+        ],
     ],
 
     /*
