@@ -25,7 +25,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body" style="display: block;">
-                    <form action="{{ url('/admin/sucursales/create') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('/admin/productos/create') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-9">
@@ -37,7 +37,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-tags"></i></span>
                                                 </div>
-                                                <select name="" id="" class="form-control" required>
+                                                <select name="categoria_id" id="categoria_id" class="form-control" required>
                                                     <option value="">Seleccione una categoría...</option>
                                                     @foreach ($categorias as $categoria)
                                                         <option value="{{ $categoria->id }}"

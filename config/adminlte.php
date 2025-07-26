@@ -314,18 +314,21 @@ return [
             'url' => 'admin/sucursales',
             'icon' => 'fas fa-fw fa-building',
             'classes' => 'bg-blue text-white',
+            'active' => ['admin/sucursales*'],
         ],
         [
             'text' => 'Categorías',
             'url' => 'admin/categorias',
             'icon' => 'fas fa-fw fa-list',
             'classes' => 'bg-blue text-white',
+            'active' => ['admin/categorias*'],
         ],
         [
             'text' => 'Productos',
             'url' => 'admin/productos',
             'icon' => 'fas fa-fw fa-box',
             'classes' => 'bg-blue text-white',
+            'active' => ['admin/productos*'],
         ],
     ],
 

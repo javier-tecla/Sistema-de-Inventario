@@ -19,6 +19,15 @@
         @yield('title_postfix', config('adminlte.title_postfix', ''))
     </title>
 
+    <style>
+        .main-sidebar .nav-sidebar .nav-link.active {
+            background-color: #007BFF !important;
+            color: #fff !important;
+            border-left: 6px solid #ffffff !important;
+            
+         }
+    </style>
+
     {{-- Custom stylesheets (pre AdminLTE) --}}
     @yield('adminlte_css_pre')
 
@@ -91,6 +100,18 @@
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+
+        </div>
+        
+    @endif
 
     {{-- Body Content --}}
     @yield('body')
