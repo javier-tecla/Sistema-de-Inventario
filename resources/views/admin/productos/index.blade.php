@@ -25,7 +25,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body" style="display: block;">
-                   
+
                     <table id="example1" class="table table-striped table-bordered table-hover table-sm">
                         <thead>
                             <tr>
@@ -48,18 +48,21 @@
                             @foreach ($productos as $producto)
                                 <tr>
                                     <td style="text-align: center">{{ $loop->iteration }}</td>
-                                    <td>{{ $producto->categoria_id }}</td>
+                                    <td>{{ $producto->categoria->nombre }}</td>
                                     <td>{{ $producto->codigo }}</td>
                                     <td>{{ $producto->nombre }}</td>
-                                    <td>{{ $producto->descripcion }}</td>
-                                    <td>{{ $producto->imagen }}</td>
+                                    <td>{!! $producto->descripcion !!}</td>
+                                    <td>
+                                        <img src="{{ asset('storage/' . $producto->imagen) }}" alt="{{ $producto->nombre }}"
+                                            class="img-thumbnail" style="width:50px; height:50px;">
+                                    </td>
                                     <td>{{ $producto->precio_compra }}</td>
                                     <td>{{ $producto->precio_venta }}</td>
                                     <td>{{ $producto->stock_minimo }}</td>
                                     <td>{{ $producto->stock_maximo }}</td>
                                     <td>{{ $producto->unidad_medida }}</td>
                                     <td style="text-align: center">
-                                        @if ( $producto->estado == '1')
+                                        @if ($producto->estado == '1')
                                             <span class="badge badge-success">Activo</span>
                                         @else
                                             <span class="badge badge-danger">Inactivo</span>
@@ -71,8 +74,8 @@
                                                 class="btn btn-info"><i class="fas fa-eye"></i> Ver</a>
                                             <a href="{{ url('/admin/productos/' . $producto->id . '/edit') }}"
                                                 class="btn btn-success"><i class="fas fa-pencil-alt"></i> Editar</a>
-                                            <form action="{{ url('/admin/productos/' . $producto->id) }}" id="miformulario{{ $producto->id }}" method="POST"
-                                                class="d-inline">
+                                            <form action="{{ url('/admin/productos/' . $producto->id) }}"
+                                                id="miformulario{{ $producto->id }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger"
@@ -81,22 +84,22 @@
                                             </form>
                                             <script>
                                                 function preguntar{{ $producto->id }}(event) {
-                                                        event.preventDefault();
-                                                        Swal.fire({
-                                                            title: "¿Desea eliminar este registro?",
-                                                            text: "",
-                                                            icon: "question",
-                                                            showCancelButton: true,
-                                                            confirmButtonColor: "#3085d6",
-                                                            cancelButtonColor: "#d33",
-                                                            confirmButtonText: "Si, eliminar!",
-                                                            denyButtonText: "No, cancelar"
-                                                        }).then((result) => {
-                                                            if (result.isConfirmed) {
-                                                                document.getElementById('miformulario{{ $producto->id }}').submit();
-                                                            }
-                                                        });
-                                                    }
+                                                    event.preventDefault();
+                                                    Swal.fire({
+                                                        title: "¿Desea eliminar este registro?",
+                                                        text: "",
+                                                        icon: "question",
+                                                        showCancelButton: true,
+                                                        confirmButtonColor: "#3085d6",
+                                                        cancelButtonColor: "#d33",
+                                                        confirmButtonText: "Si, eliminar!",
+                                                        denyButtonText: "No, cancelar"
+                                                    }).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                            document.getElementById('miformulario{{ $producto->id }}').submit();
+                                                        }
+                                                    });
+                                                }
                                             </script>
                                         </div>
                                     </td>
@@ -104,7 +107,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                   
+
                 </div>
                 <!-- /.card-body -->
             </div>
