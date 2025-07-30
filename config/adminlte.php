@@ -330,6 +330,13 @@ return [
             'classes' => 'bg-blue text-white',
             'active' => ['admin/productos*'],
         ],
+        [
+            'text' => 'Proveedores',
+            'url' => 'admin/proveedores',
+            'icon' => 'fas fa-fw fa-truck',
+            'classes' => 'bg-blue text-white',
+            'active' => ['admin/proveedor*'],
+        ],
     ],
 
     /*

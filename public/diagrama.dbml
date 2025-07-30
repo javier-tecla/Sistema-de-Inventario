@@ -25,5 +25,13 @@ Table Productos {
     stock_maximo int [default: 0]
     unidad_medida varchar(50) [not null]
     estado boolean [default: true]
-    
+}
+
+Table Proveedores {
+    id int [pk, increment]
+    empresa varchar(100)
+    direccion varchar(255)
+    nombre varchar(100) [not null]
+    telefono varchar(15)
+    email varchar(100)
 }

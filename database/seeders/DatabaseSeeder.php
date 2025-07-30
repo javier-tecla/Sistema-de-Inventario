@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Producto;
 use App\Models\Sucursal;
 use App\Models\Categoria;
+use App\Models\Proveedor;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
         Sucursal::factory(10)->create();
         Categoria::factory(50)->create();
         Producto::factory(200)->create();
+        Proveedor::factory(20)->create();
 
         User::factory(1)->create([
             'name' => 'Javier',
