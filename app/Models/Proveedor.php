@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Lote;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Proveedor extends Model
 {
@@ -19,4 +20,9 @@ class Proveedor extends Model
         'email',
 
     ];
+
+    public function Lotes()
+    {
+        return $this->hasMany(Lote::class);
+    }
 }

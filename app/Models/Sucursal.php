@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\InventarioSucursalLote;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Sucursal extends Model
 {
@@ -18,4 +19,9 @@ class Sucursal extends Model
         'telefono',
         'activa',
     ];
+
+    public function inventario_sucursal_lotes()
+    {
+        return $this->hasMany(InventarioSucursalLote::class);
+    }
 }

@@ -35,3 +35,24 @@ Table Proveedores {
     telefono varchar(15)
     email varchar(100)
 }
+
+Table Lotes {
+    id int [pk, increment]
+    producto_id int [ref: > Productos.id]
+    proveedor_id int [ref: > Proveedores.id]
+    codigo_lote varchar(50) [not null]
+    fecha_entrada date
+    fecha_vencimiento date
+    cantidad_inicial int [not null]
+    cantidad_actual int [not null]
+    precio_compra decimal(10, 2) [null]
+    precio_venta decimal(10, 2) [null]
+    estado boolean [default: true]
+}
+
+Table Inventario_Sucursal_Lote {
+    id int [pk, increment]
+    lote_id int [ref: > Lotes.id]
+    sucursal_id int [ref: > Sucursales.id]
+    cantidad_en_sucursal int [not null]
+}
