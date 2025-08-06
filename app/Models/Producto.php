@@ -37,4 +37,10 @@ class Producto extends Model
     {
         return $this->hasMany(Lote::class);
     }
+
+     public function movimientoInventario()
+    {
+        return $this->hasMany(MovimientoInventario::class);
+    }
+    
 }

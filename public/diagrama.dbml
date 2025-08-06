@@ -56,3 +56,14 @@ Table Inventario_Sucursal_Lote {
     sucursal_id int [ref: > Sucursales.id]
     cantidad_en_sucursal int [not null]
 }
+
+Table Movimientos_inventario {
+    id int [pk, increment]
+    producto_id int [ref: > Productos.id]
+    lote_id int [ref: > Lotes.id]
+    sucursal_id int [ref: > Sucursales.id]
+    tipo_movimiento varcgar(50) [not null]
+    cantidad int [not null]
+    fecha datetime [default: `current_timestamp`]
+    observaciones text
+}
