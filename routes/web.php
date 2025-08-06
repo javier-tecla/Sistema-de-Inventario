@@ -45,3 +45,8 @@ Route::post('/admin/proveedores/create', [App\Http\Controllers\ProveedorControll
 Route::put('/admin/proveedores/{id}', [App\Http\Controllers\ProveedorController::class, 'update'])->name('proveedores.update')->middleware('auth');
 Route::delete('/admin/proveedores/{id}', [App\Http\Controllers\ProveedorController::class, 'destroy'])->name('proveedores.destroy')->middleware('auth');
 
+//rutas para compras
+Route::get('/admin/compras', [App\Http\Controllers\CompraController::class, 'index'])->name('compras.index')->middleware('auth');
+Route::get('/admin/compras/create', [App\Http\Controllers\CompraController::class, 'create'])->name('compras.create')->middleware('auth');
+Route::post('/admin/compras/create', [App\Http\Controllers\CompraController::class, 'store'])->name('compras.store')->middleware('auth');
+Route::get('/admin/compras/{id}/edit', [App\Http\Controllers\CompraController::class, 'edit'])->name('compras.edit')->middleware('auth');

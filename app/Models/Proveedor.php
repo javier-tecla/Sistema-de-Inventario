@@ -31,4 +31,4 @@ class Proveedor extends Model
         return $this->hasMany(Compra::class);
     }
 }
-}
+
