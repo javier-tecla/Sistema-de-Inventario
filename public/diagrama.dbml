@@ -67,3 +67,22 @@ Table Movimientos_inventario {
     fecha datetime [default: `current_timestamp`]
     observaciones text
 }
+
+Table Compras {
+    id int [pk, increment]
+    proveedor_id int [ref: > Proveedores.id]
+    fecha datetime [default: `current_timestamp`]
+    total decimal(10, 2) [not null]
+    estado varchar (50) [default: 'pediente']
+    observaciones text
+}
+
+Table Detalle_Compras {
+    id int [pk, increment]
+    compra_id int [ref: > Compras.id]
+    producto_id int [ref: > Compras.id]
+    lote_id int [ref: > Lotes.id]
+    cantidad int [not null]
+    precio_unitario decimal(10, 2) [not null]
+    subtotal decimal(10,2) [not null]
+}
