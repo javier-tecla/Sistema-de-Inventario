@@ -148,6 +148,7 @@
                 border: none;
             }
         </style>
+        
     @stop
 
     @section('js')
@@ -206,4 +207,5 @@
                 }).buttons().container().appendTo('#example1_wrapper .row:eq(0)');
             });
         </script>
+        
     @stop

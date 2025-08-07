@@ -25,85 +25,80 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body" style="display: block;">
-                
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="proveedor_id">Proveedores </label>
-                                            <p>{{$compra->proveedor->nombre }}</p>
-                                        </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="proveedor_id">Proveedores </label>
+                                        <p>{{ $compra->proveedor->nombre }}</p>
                                     </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="fecha">Fecha de la compra </label>
-                                            <p>{{$compra->fecha }}</p>
-                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="fecha">Fecha de la compra </label>
+                                        <p>{{ $compra->fecha }}</p>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="observaciones">Observaciones </label>
-                                             <p>{{$compra->observaciones }}</p>
-                                        </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="observaciones">Observaciones </label>
+                                        <p>{{ $compra->observaciones }}</p>
                                     </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="observaciones">Estado de la compra </label>
-                                             <p>{{$compra->estado }}</p>
-                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="observaciones">Estado de la compra </label>
+                                        <p>{{ $compra->estado }}</p>
                                     </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="observaciones">Total de la compra </label>
-                                             <p>{{$compra->total }}</p>
-                                        </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="observaciones">Total de la compra </label>
+                                        <p>{{ $compra->total }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        
+
                 </div>
 
-                
+
                 <!-- /.card-body -->
             </div>
 
-             <div class="card card-primary">
+            <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title"><b>Paso 2 | Compra creada</b></h3>
-
-                    <div class="card-tools">
-
-                    </div>
                     <!-- /.card-tools -->
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body" style="display: block;">
-                
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row">
-                                   
-                                </div>
-                            </div>
-                        </div>
 
-                        
-                </div>
+                    <livewire:counter />
 
-                
-                <!-- /.card-body -->
+
             </div>
+            <!-- /.card-body -->
         </div>
-    @stop
+        <!-- /.card -->
+    </div>
+</div>
 
-    @section('css')
-       
-    @stop
 
-    @section('js')
 
-     @stop
-      
+
+@stop
+
+@section('css')
+    @livewireStyles
+@stop
+
+@section('js')
+    @livewireScripts
+@stop
+
+

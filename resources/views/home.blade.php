@@ -1,5 +1,9 @@
 @extends('adminlte::page')
 
+@push('css')
+    @livewireStyles
+@endpush
+
 @section('title', 'Dashboard')
 
 @section('content_header')
@@ -18,3 +22,7 @@
 @section('js')
     <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
 @stop
+
+@push('js')
+    @livewireScripts
+@endpush
