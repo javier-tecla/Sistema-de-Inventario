@@ -80,25 +80,12 @@
 
                     <livewire:counter />
 
-
+                </div>
+                <!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
+            <!-- /.card -->
         </div>
-        <!-- /.card -->
     </div>
-</div>
-
-
-
-
-@stop
-
-@section('css')
-    @livewireStyles
-@stop
-
-@section('js')
-    @livewireScripts
 @stop
 
 
