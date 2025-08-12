@@ -72,13 +72,13 @@
 
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title"><b>Paso 2 | Compra creada</b></h3>
+                    <h3 class="card-title"><b>Paso 2 | Agregar productos</b></h3>
                     <!-- /.card-tools -->
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body" style="display: block;">
 
-                    <livewire:counter />
+                <livewire:admin.compras.items-compra />
 
                 </div>
                 <!-- /.card-body -->
@@ -88,4 +88,16 @@
     </div>
 @stop
 
+@section('css')
+    <style>
+        .select2-container .select2-selection--single {
+            height: 40px !important;
+        }
+    </style>
+@stop
 
+@section('js')
+    <script>
+        $('.select2').select2({});
+    </script>
+@stop

@@ -99,4 +99,9 @@ class ItemsCompra extends Component
     {
         return view('livewire.admin.compras.items-compra');
     }
+
+    public function prueba()
+    {
+        $this->cantidad = $this->cantidad;
+    }
 }

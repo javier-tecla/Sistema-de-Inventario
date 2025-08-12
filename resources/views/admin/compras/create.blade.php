@@ -39,7 +39,7 @@
                                                     <span class="input-group-text"><i class="fas fa-users"></i></span>
                                                 </div>
                                                 <select name="proveedor_id" id="proveedor_id" class="form-control" required>
-                                                    <option value="">Seleccione una proveedor...</option>
+                                                    <option value="">Seleccione un proveedor...</option>
                                                     @foreach ($proveedores as $proveedor)
                                                         <option value="{{ $proveedor->id }}"
                                                             {{ old('proveedor_id') == $proveedor->id ? 'selected' : '' }}>
