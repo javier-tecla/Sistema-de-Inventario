@@ -48,7 +48,16 @@ class ItemsCompra extends Component
         $this->cantidad = 1;
     }
 
+    protected $rules = [
+        'productoId' => 'required',
+        'cantidad' => 'required',
+        'precioUnitario' =>'required',
+        'codigoLote' => 'required',
+        'fechaVencimiento' => 'required',
+    ];
+
     public function agregarItems(){
+        // dd('Entrando a la funcion');
         $this->validate();
 
         DB::beginTransaction();
@@ -60,13 +69,13 @@ class ItemsCompra extends Component
             $lote = Lote::create([
                 'producto_id' => $producto->id,
                 'proveedor_id' => $this->compra->proveedor->id,
-                'codigoLotye' => $this->codigoLote,
+                'codigo_lote' => $this->codigoLote,
                 'fecha_entrada' => now()->toDateString(),
                 'fecha_vencimiento' => $this->fechaVencimiento,
                 'cantidad_inicial' => 0,
                 'cantidad_actual' => 0,
                 'precio_compra' => $this->precioCompra,
-                'precio_venat' => $this->precioVenta,
+                'precio_venta' => $this->precioVenta,
                 'estado' => true,
             ]);
 
@@ -77,7 +86,7 @@ class ItemsCompra extends Component
                 'producto_id' => $producto->id,
                 'lote_id' => $loteId,
                 'cantidad' => $this->cantidad,
-                'precio_unitario' => $this->precioUniotario,
+                'precio_unitario' => $this->precioUnitario,
                 'subtotal' => $this->cantidad * $this->precioUnitario,
             ]);
 
@@ -90,8 +99,15 @@ class ItemsCompra extends Component
 
             $this->cargarDatos();
 
-        }catch(Exception $e){
+            $this->dispatch(
+                'mostrar-alerta',
+                icono: 'success',
+                mensaje: 'Producto agregado exitosamente'
+            );
+
+        }catch(\Exception $e){
             DB::rollBack();
+            // dd('Error al añadir el producto, '.$e->getMessage());
         }
     }
 
@@ -100,8 +116,12 @@ class ItemsCompra extends Component
         return view('livewire.admin.compras.items-compra');
     }
 
-    public function prueba()
-    {
+    public function prueba(){
+        $this->dispatch(
+            'mostrar-alerta',
+            icono: 'success',
+            mensaje: 'Desde el componente'
+        );
         $this->cantidad = $this->cantidad;
     }
 }

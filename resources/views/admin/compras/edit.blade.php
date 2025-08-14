@@ -78,7 +78,7 @@
                 <!-- /.card-header -->
                 <div class="card-body" style="display: block;">
 
-                <livewire:admin.compras.items-compra />
+                <livewire:admin.compras.items-compra :compra="$compra" />
 
                 </div>
                 <!-- /.card-body -->
@@ -86,6 +86,8 @@
             <!-- /.card -->
         </div>
     </div>
+
+    
 @stop
 
 @section('css')
