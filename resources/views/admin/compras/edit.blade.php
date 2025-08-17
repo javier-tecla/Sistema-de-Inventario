@@ -53,12 +53,7 @@
                                         <p>{{ $compra->estado }}</p>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="observaciones">Total de la compra </label>
-                                        <p>{{ $compra->total }}</p>
-                                    </div>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>

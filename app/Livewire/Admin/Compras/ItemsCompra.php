@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Compras;
 use Exception;
 use App\Models\Lote;
 use App\Models\Compra;
+use App\Models\DetalleCompra;
 use Livewire\Component;
 use App\Models\Producto;
 use Illuminate\Support\Facades\DB;
@@ -33,13 +34,15 @@ class ItemsCompra extends Component
     public $totalCompra;
 
     //este metodo se ejecuta cuando el componente se carga inicialmente
-    public function mount(Compra $compra){
+    public function mount(Compra $compra)
+    {
         $this->compra = $compra;
         $this->productos = Producto::all();
         $this->cargarDatos();
     }
 
-    public function cargarDatos(){
+    public function cargarDatos()
+    {
         $this->compra->load('detalles.producto', 'detalles.lote');
         $this->totalCompra = $this->compra->detalles->sum('subtotal');
 
@@ -51,17 +54,18 @@ class ItemsCompra extends Component
     protected $rules = [
         'productoId' => 'required',
         'cantidad' => 'required',
-        'precioUnitario' =>'required',
+        'precioUnitario' => 'required',
         'codigoLote' => 'required',
         'fechaVencimiento' => 'required',
     ];
 
-    public function agregarItems(){
+    public function agregarItems()
+    {
         // dd('Entrando a la funcion');
         $this->validate();
 
         DB::beginTransaction();
-        try{
+        try {
             $producto = Producto::find($this->productoId);
             $loteId = null;
 
@@ -104,8 +108,7 @@ class ItemsCompra extends Component
                 icono: 'success',
                 mensaje: 'Producto agregado exitosamente'
             );
-
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             DB::rollBack();
             // dd('Error al añadir el producto, '.$e->getMessage());
         }
@@ -116,12 +119,39 @@ class ItemsCompra extends Component
         return view('livewire.admin.compras.items-compra');
     }
 
-    public function prueba(){
+    public function prueba()
+    {
         $this->dispatch(
             'mostrar-alerta',
             icono: 'success',
             mensaje: 'Desde el componente'
         );
         $this->cantidad = $this->cantidad;
+    }
+
+    public function borrarItem($detalleId)
+    {
+        DB::beginTransaction();
+        try {
+            $detalle = DetalleCompra::find($detalleId);
+            $detalle->delete();
+
+            //recalcular el total de la compra y lo guardamos
+            $this->compra->total = $this->compra->detalles->sum('subtotal');
+            $this->compra->save();
+
+            DB::commit();
+
+            $this->cargarDatos();
+
+            $this->dispatch(
+                'mostrar-alerta',
+                icono: 'success',
+                mensaje: 'Producto eliminado exitosamente'
+            );
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd('Error al borrar el producto, '.$e->getMessage());
+        }
     }
 }

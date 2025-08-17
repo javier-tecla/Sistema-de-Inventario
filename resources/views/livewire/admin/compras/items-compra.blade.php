@@ -11,7 +11,8 @@
                     <select name="" wire:model='productoId' id="" class="form-control select2">
                         <option value="">Seleccione un producto...</option>
                         @foreach ($productos as $producto)
-                            <option value="{{ $producto->id }}">{{ $producto->codigo . ' - ' . $producto->nombre }}</option>
+                            <option value="{{ $producto->id }}">{{ $producto->codigo . ' - ' . $producto->nombre }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -68,7 +69,7 @@
 
         <div class="col-md-2">
             <div class="form-group">
-                <label for="fechaVencimiento">Fecha de vencimiento </label>
+                <label for="fechaVencimiento">Fecha de vencimiento <sup class="text-danger">(*)</sup></label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-calendar"></i></span>
@@ -97,6 +98,53 @@
                 showConfirmButton: false,
                 timer: 2000,
             })">
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            @if ($compra->detalles->count() > 0)
+                <h3>Productos de la compra</h3>
+                <table class="table table-striped table-bordered table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th>Nro</th>
+                            <th>Producto</th>
+                            <th>Lote</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>SubTotal</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($compra->detalles as $detalle)
+                            <tr>
+                                <td style="text-align: center">{{ $loop->iteration }}</td>
+                                <td>{{ $detalle->producto->nombre }}</td>
+                                <td>{{ $detalle->lote->codigo_lote }}</td>
+                                <td>{{ $detalle->cantidad }}</td>
+                                <td>{{ $detalle->precio_unitario }}</td>
+                                <td>{{ $detalle->subtotal }}</td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm"
+                                        wire:click="borrarItem({{ $detalle->id }})"><i
+                                            class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+            @else
+                <p>No hay producto en esta compra.</p>
+            @endif
+            <hr>
+
+            <h4><b>Total de la compra: </b>{{ $totalCompra }}</h4>
         </div>
     </div>
 </div>
