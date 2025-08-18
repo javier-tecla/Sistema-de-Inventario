@@ -54,10 +54,21 @@ class ItemsCompra extends Component
     protected $rules = [
         'productoId' => 'required',
         'cantidad' => 'required',
-        'precioUnitario' => 'required',
+        'precioCompra' => 'required',
+        'precioVenta' => 'required',
         'codigoLote' => 'required',
         'fechaVencimiento' => 'required',
     ];
+
+    public function updatedProductoId($value){
+         $producto = Producto::find($value);
+         if($producto){
+            $this->precioCompra = $producto->precio_compra;
+            $this->precioVenta = $producto->precio_venta;
+         }else{
+            $this->reset(['precioCompra','precioVenta']);
+         }
+    }
 
     public function agregarItems()
     {
@@ -90,8 +101,8 @@ class ItemsCompra extends Component
                 'producto_id' => $producto->id,
                 'lote_id' => $loteId,
                 'cantidad' => $this->cantidad,
-                'precio_unitario' => $this->precioUnitario,
-                'subtotal' => $this->cantidad * $this->precioUnitario,
+                'precio_unitario' => $this->precioCompra,
+                'subtotal' => $this->cantidad * $this->precioCompra,
             ]);
 
             //recalcular el total de la compra y lo guardamos
