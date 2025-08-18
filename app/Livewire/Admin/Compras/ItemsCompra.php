@@ -133,7 +133,15 @@ class ItemsCompra extends Component
     {
         DB::beginTransaction();
         try {
+
+            //busca el item del producto
             $detalle = DetalleCompra::find($detalleId);
+
+            //borrar el lote del detalle de producto
+            $lote_id = $detalle->lote_id;
+            $lote = Lote::find($lote_id);
+            $lote->delete();
+
             $detalle->delete();
 
             //recalcular el total de la compra y lo guardamos
