@@ -53,6 +53,12 @@
                                         <p>{{ $compra->estado }}</p>
                                     </div>
                                 </div>
+
+                                 <div class="col-md-2">
+                                    <div class="form-group">
+                                        <a href="{{ route('compras.enviarCorreo', $compra) }}" class="btn btn-primary"><i class="fas fa-envelope"></i> Enviar correo al proveedor</a>
+                                    </div>
+                                </div>
                                
                             </div>
                         </div>

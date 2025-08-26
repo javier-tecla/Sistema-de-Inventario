@@ -103,11 +103,12 @@
                         @enderror
                     </div>
                 </div>
-
+                <div class="col-md-6 d-flex align-items-end">
+                    <div class="form-group w-100">
+                        <button class="btn btn-primary btn-block" wire:click="agregarItems">Agregar</button>
+                    </div>
+                </div>
             </div>
-
-
-
         </div>
         <div class="col-md-8">
             <div class="row">
@@ -159,10 +160,7 @@
 
 
         <div class="col-md-1">
-            <div style="height: 32px"></div>
-            <div class="form-group">
-                <button class="btn btn-primary" wire:click="agregarItems">Agregar</button>
-            </div>
+
         </div>
 
         <div x-data
@@ -175,8 +173,4 @@
             })">
         </div>
     </div>
-
-    <hr>
-
-
 </div>
