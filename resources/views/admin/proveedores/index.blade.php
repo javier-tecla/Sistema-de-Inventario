@@ -177,7 +177,7 @@
                                         <div class="btn-group" role="group" aria-label="Basic example">
 
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            <button type="button" class="btn btn-primary mr-1" data-toggle="modal"
                                                 data-target="#ModalShow{{ $proveedor->id }}">
                                                 <i class="fas fa-eye"></i> Ver
                                             </button>
@@ -250,7 +250,7 @@
                                             </div>
 
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-success" data-toggle="modal"
+                                            <button type="button" class="btn btn-success mr-1" data-toggle="modal"
                                                 data-target="#ModalEdit{{ $proveedor->id }}">
                                                 <i class="fas fa-pencil-alt"></i> Editar
                                             </button>

@@ -53,9 +53,9 @@
                                     <td style="text-align: center">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <a href="{{ url('/admin/sucursales/' . $sucursal->id) }}"
-                                                class="btn btn-info"><i class="fas fa-eye"></i> Ver</a>
+                                                class="btn btn-info mr-1"><i class="fas fa-eye"></i> Ver</a>
                                             <a href="{{ url('/admin/sucursales/' . $sucursal->id . '/edit') }}"
-                                                class="btn btn-success"><i class="fas fa-pencil-alt"></i> Editar</a>
+                                                class="btn btn-success mr-1"><i class="fas fa-pencil-alt"></i> Editar</a>
                                             <form action="{{ url('/admin/sucursales/' . $sucursal->id) }}" id="miformulario{{ $sucursal->id }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
