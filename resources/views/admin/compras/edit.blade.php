@@ -54,23 +54,22 @@
                                     </div>
                                 </div>
 
-                                 <div class="col-md-2">
-                                    <div class="form-group">
-                                        <a href="{{ route('compras.enviarCorreo', $compra) }}" class="btn btn-primary"><i class="fas fa-envelope"></i> Enviar correo al proveedor</a>
-                                    </div>
+                                <div class="col-md-2">
+
                                 </div>
-                               
+
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-
-
                 <!-- /.card-body -->
             </div>
+            <!-- /.card -->
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title"><b>Paso 2 | Agregar productos</b></h3>
@@ -79,16 +78,64 @@
                 <!-- /.card-header -->
                 <div class="card-body" style="display: block;">
 
-                <livewire:admin.compras.items-compra :compra="$compra" />
+                    <livewire:admin.compras.items-compra :compra="$compra" />
 
                 </div>
                 <!-- /.card-body -->
             </div>
-            <!-- /.card -->
         </div>
     </div>
 
-    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title"><b>Paso 3 | Finalizar compra</b></h3>
+                    <!-- /.card-tools -->
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body" style="display: block;">
+                    <form action="{{ route('compras.finalizarCompra', $compra) }}" method="POST">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="sucursal_id">Sucursal <sup class="text-danger">(*)</sup></label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-building"></i></span>
+                                        </div>
+                                        <select name="sucursal_id" id="sucursal_id" class="form-control" required>
+                                            <option value="">Seleccione una sucursal...</option>
+                                            @foreach ($sucursales as $sucursal)
+                                                <option value="{{ $sucursal->id }}"
+                                                    {{ old('sucursal_id') == $sucursal->id ? 'selected' : '' }}>
+                                                    {{ $sucursal->nombre }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('sucursal_id')
+                                        <small style="color: red">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <a href="{{ route('compras.enviarCorreo', $compra) }}" class="btn btn-primary"><i
+                                            class="fas fa-envelope"></i> Enviar correo al proveedor</a>
+                                    <button class="btn btn-success" type="submit"><i class="fas fa-check"></i> Finalizar
+                                        compra</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('css')

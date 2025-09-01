@@ -11,14 +11,14 @@ class MovimientoInventario extends Model
     protected $fillable = [
         'producto_id',
         'lote_id',
-        'sucursal_id ',
+        'sucursal_id',
         'tipo_movimiento',
         'cantidad',
         'fecha',
         'observaciones',
     ];
 
-    public function produto()
+    public function producto()
     {
         return $this->belongsTo(Producto::class);
     }

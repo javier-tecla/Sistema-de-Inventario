@@ -48,11 +48,11 @@
                             
                                     <td style="text-align: center">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ url('/admin/compra/' . $compra->id) }}"
+                                            <a href="{{ url('/admin/compras/' . $compra->id) }}"
                                                 class="btn btn-info"><i class="fas fa-eye"></i> Ver</a>
-                                            <a href="{{ url('/admin/compra/' . $compra->id . '/edit') }}"
+                                            <a href="{{ url('/admin/compras/' . $compra->id . '/edit') }}"
                                                 class="btn btn-success"><i class="fas fa-pencil-alt"></i> Editar</a>
-                                            <form action="{{ url('/admin/compra/' . $compra->id) }}"
+                                            <form action="{{ url('/admin/compras/' . $compra->id) }}"
                                                 id="miformulario{{ $compra->id }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
